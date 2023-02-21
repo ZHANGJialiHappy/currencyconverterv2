@@ -3,9 +3,10 @@ import React from 'react'
 type Props = {
     currencyOption: string[],
     selectedCurrency: string,
+    onChangeCurrencyOption(e: React.ChangeEvent<HTMLSelectElement>): void
 }
 
-function CurrencyRow({currencyOption,selectedCurrency}: Props ) {
+function CurrencyRow({currencyOption,selectedCurrency,onChangeCurrencyOption}: Props ) {
     return (
         <div className="flex gap-5">
             <input
@@ -17,6 +18,7 @@ function CurrencyRow({currencyOption,selectedCurrency}: Props ) {
             <select 
             className="input input-bordered input-warning max-w-xs flex-1 w-32"
             value={selectedCurrency}
+            onChange={onChangeCurrencyOption}
             >
                 {currencyOption.map((option, key)=>
                 <option key={option} value={option}>{option}</option>)}
