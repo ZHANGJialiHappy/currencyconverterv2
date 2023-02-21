@@ -1,6 +1,11 @@
 import React from 'react'
 
-function CurrencyRow() {
+type Props = {
+    currencyOption: string[],
+    selectedCurrency: string,
+}
+
+function CurrencyRow({currencyOption,selectedCurrency}: Props ) {
     return (
         <div className="flex gap-5">
             <input
@@ -9,8 +14,12 @@ function CurrencyRow() {
                 className="input input-bordered input-warning w-full max-w-xs flex-none"
             />
 
-            <select className="input input-bordered input-warning max-w-xs flex-1 w-32">
-                <option value="hi">hi</option>
+            <select 
+            className="input input-bordered input-warning max-w-xs flex-1 w-32"
+            value={selectedCurrency}
+            >
+                {currencyOption.map((option, key)=>
+                <option key={option} value={option}>{option}</option>)}
             </select>
         </div>
     )
